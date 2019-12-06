@@ -1,7 +1,14 @@
-import { Book } from "./../models/models";
+import { Book, Genre, Author } from "./../models/models";
 
 export const resolvers = {
   Query: {
-    books: async () => await Book.findAll()
+    books: async () => {
+      return await Book.findAll({
+        include: [
+          { model: Genre, as: "genre" },
+          { model: Author, as: "author" }
+        ]
+      });
+    }
   }
 };
