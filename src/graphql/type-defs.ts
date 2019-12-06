@@ -7,6 +7,8 @@ export const typeDefs = gql`
   type Book {
     id: ID!
     title: String!
+    author: Author!
+    genre: Genre!
   }
 
   type Genre {
