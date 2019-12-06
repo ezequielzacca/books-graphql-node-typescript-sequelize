@@ -5,18 +5,16 @@ export const initializeDB = async () => {
   Author.hasMany(Book, {
     as: "books"
   });
-  Book.hasOne(Author, {
+  Book.belongsTo(Author, {
     as: "author",
-    foreignKey: "id",
-    sourceKey: "authorId"
+    foreignKey: "id"
   });
   Genre.hasMany(Book, {
     as: "books"
   });
-  Book.hasOne(Genre, {
+  Book.belongsTo(Genre, {
     as: "genre",
-    foreignKey: "id",
-    sourceKey: "genreId"
+    foreignKey: "id"
   });
   await Author.sync();
   await Genre.sync();
