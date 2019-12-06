@@ -25,6 +25,8 @@ export const initializeDB = async () => {
 
 export interface IBook {
   readonly id: number;
+  genreId: number;
+  authorId: number;
 }
 
 // Need to declare the static model so `findOne` etc. use correct types.

@@ -1,14 +1,13 @@
-import { Book, Genre, Author } from "./../models/models";
+import { Book, Genre, Author, IBook, IGenre } from "./../models/models";
 
 export const resolvers = {
   Query: {
-    books: async () => {
-      return await Book.findAll({
-        include: [
-          { model: Genre, as: "genre" },
-          { model: Author, as: "author" }
-        ]
-      });
-    }
+    books: async () => await Book.findAll(),
+    genres: async () => await Genre.findAll(),
+    authors: async () => await Author.findAll()
+  },
+  Book: {
+    genre: async (parent: IBook) => Genre.findByPk(parent.genreId),
+    author: async (parent: IBook) => Author.findByPk(parent.authorId)
   }
 };
