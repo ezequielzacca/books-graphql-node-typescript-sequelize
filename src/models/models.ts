@@ -48,6 +48,7 @@ export const Book = <BookStatic>sequelize.define("book", {
 
 export interface IGenre {
   readonly id: number;
+  books: Array<IBook>;
 }
 
 // Need to declare the static model so `findOne` etc. use correct types.
@@ -69,6 +70,7 @@ export const Genre = <GenreStatic>sequelize.define("genre", {
 
 export interface IAuthor {
   readonly id: number;
+  books: Array<IBook>;
 }
 
 // Need to declare the static model so `findOne` etc. use correct types.

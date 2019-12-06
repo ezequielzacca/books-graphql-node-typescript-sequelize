@@ -1,4 +1,11 @@
-import { Book, Genre, Author, IBook, IGenre } from "./../models/models";
+import {
+  Book,
+  Genre,
+  Author,
+  IBook,
+  IGenre,
+  IAuthor
+} from "./../models/models";
 
 export const resolvers = {
   Query: {
@@ -9,5 +16,13 @@ export const resolvers = {
   Book: {
     genre: async (parent: IBook) => Genre.findByPk(parent.genreId),
     author: async (parent: IBook) => Author.findByPk(parent.authorId)
+  },
+  Genre: {
+    books: async (parent: IGenre) =>
+      Book.findAll({ where: { genreId: parent.id } })
+  },
+  Author: {
+    books: async (parent: IAuthor) =>
+      Book.findAll({ where: { authorId: parent.id } })
   }
 };

@@ -14,11 +14,13 @@ export const typeDefs = gql`
   type Genre {
     id: ID!
     name: String!
+    books: [Book!]!
   }
 
   type Author {
     id: ID!
     name: String!
+    books: [Book!]!
   }
 
   # The "Query" type is the root of all GraphQL queries.
