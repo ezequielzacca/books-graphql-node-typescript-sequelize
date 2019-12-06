@@ -2,10 +2,20 @@ import { sequelize } from "../database/database.init";
 import { Model, INTEGER, STRING, BuildOptions } from "sequelize";
 
 export const initializeDB = async () => {
-  Author.hasMany(Book);
-  Book.belongsTo(Author);
-  Genre.hasMany(Book);
-  Book.belongsTo(Genre);
+  Author.hasMany(Book, {
+    as: "books"
+  });
+  Book.belongsTo(Author, {
+    as: "author",
+    foreignKey: "id"
+  });
+  Genre.hasMany(Book, {
+    as: "books"
+  });
+  Book.belongsTo(Genre, {
+    as: "genre",
+    foreignKey: "id"
+  });
   await Author.sync();
   await Genre.sync();
   await Book.sync();
