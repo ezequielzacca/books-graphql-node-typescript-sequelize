@@ -8,7 +8,9 @@ export const loadFixtures = async () => {
   const lastNames = ["Gonzales", "Fernandez", "Perez", "Gomez"];
   let savedAuthors: any[] = [];
   for (let i = 1; i <= 10; i++) {
-    const authorName = names[randomBetween(0, names.length - 1)];
+    const authorName = `${names[randomBetween(0, names.length - 1)]} ${
+      lastNames[randomBetween(0, lastNames.length - 1)]
+    }`;
     const author = new Author({
       name: authorName
     });
