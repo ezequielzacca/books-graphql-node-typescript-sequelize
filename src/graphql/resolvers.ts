@@ -2,6 +2,6 @@ import { Book } from "./../models/models";
 
 export const resolvers = {
   Query: {
-    books: Book.findAll()
+    books: async () => await Book.findAll()
   }
 };

@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize";
+import { Model, Sequelize } from "sequelize";
 
 export const sequelize = new Sequelize("books", "root", "", {
   host: "localhost",

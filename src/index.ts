@@ -1,9 +1,10 @@
+import { loadFixtures } from "./database/fixtures";
+import { initializeDB } from "./models/models";
 import { ApolloServer, gql } from "apollo-server-express";
 import { typeDefs } from "./graphql/type-defs";
 import { resolvers } from "./graphql/resolvers";
 
 import express from "express";
-import mongoose from "mongoose";
 
 const startServer = async () => {
   const app = express();
@@ -32,5 +33,8 @@ const startServer = async () => {
 };
 
 startServer()
-  .then()
+  .then(async () => {
+    await initializeDB();
+    await loadFixtures();
+  })
   .catch(console.log);
